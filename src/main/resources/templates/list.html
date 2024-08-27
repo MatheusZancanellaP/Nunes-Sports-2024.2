@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+    <div style="text-align: center;">
+        <img th:src="@{/logo.jpg}" alt="Logo" style="max-width: 300px;">
+    </div>
+    <h2>Products List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.code}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}" style="width: 40%"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <a th:href="@{/products/{id}(id=${product.id})}">View</a>
+                <a th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
+                <a th:href="@{/products/{id}/delete(id=${product.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/products/new" style="margin-top: 20px">New Product</a>
+</body>
+</html>

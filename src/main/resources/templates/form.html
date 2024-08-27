@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+    <h2>Product Form</h2>
+    <form th:action="${product.id != null ? '/products/' + product.id + '/edit' : '/products/new'}" method="post">
+
+        <!-- Code Field -->
+        <label for="code">Code:</label>
+        <input type="text" id="code" name="code" th:value="${product.code}" required>
+        
+        <br>
+
+        <!-- Name Field -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:value="${product.name}" required>
+        <br>
+
+        <!-- Description Field -->
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" th:text="${product.description}" required></textarea>
+        <br>
+
+        <!-- Price Field -->
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" th:value="${product.price}" required>
+        <br>
+        <p th:if="${errorMessage}"  th:text="${errorMessage}" style="color:red"></p>
+        <!-- Submit Button -->
+        <button type="submit">Save</button>
+        
+        <!-- Cancel Button -->
+        <a th:if="${product.id != null}" th:href="@{/products/{id}(id=${product.id})}">Cancel</a>
+        <a th:if="${product.id == null}" th:href="@{/products}">Cancel</a>
+    </form>
+</body>
+</html>

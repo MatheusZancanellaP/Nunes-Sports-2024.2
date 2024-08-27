@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+    <h2>Product Details</h2>
+    <form>
+        <label for="code">Code:</label>
+        <input type="text" id="code" name="code" th:value="${product.code}" readonly>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:value="${product.name}" readonly>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" th:text="${product.description}" readonly></textarea>
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" th:value="${product.price}" readonly>
+    </form>
+    <a th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
+    <a th:href="@{/products/{id}/delete(id=${product.id})}">Delete</a>
+    <a th:href="@{/products}">Back to List</a>
+</body>
+</html>
