@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: nunes_postgres
+    environment:
+      POSTGRES_USER: nunes_user
+      POSTGRES_PASSWORD: nunes_password
+      POSTGRES_DB: nunes_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: nunes_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/nunes_db
+      SPRING_DATASOURCE_USERNAME: nunes_user
+      SPRING_DATASOURCE_PASSWORD: nunes_password
+    volumes:
+      - ./target:/app/target
+    command: ["mvn", "spring-boot:run"]
+
+volumes:
+  postgres_data:
+
+
