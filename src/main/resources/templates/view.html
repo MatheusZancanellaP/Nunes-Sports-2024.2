@@ -22,7 +22,9 @@
         <input type="text" id="price" name="price" th:value="${product.price}" readonly>
     </form>
     <a th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
-    <a th:href="@{/products/{id}/delete(id=${product.id})}">Delete</a>
+    <form th:action="@{/products/{id}/delete(id=${product.id})}" th:method="delete" style="display: inline;">
+        <button type="submit" class="delete-link">Delete</button>
+    </form>
     <a th:href="@{/products}">Back to List</a>
 </body>
 </html>
