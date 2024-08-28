@@ -46,17 +46,18 @@ button:hover {
     background-color: #1c6692;
 }
 
-a {
+a, .delete-link {
     text-decoration: none;
     display: inline-block;
     padding: 12px 18px;
     margin-right: 12px;
+    margin-top:0;
     background-color: #2980b9;
     color: white;
     border-radius: 4px;
 }
 
-a:hover {
+a:hover, .delete-link:hover {
     background-color: #1c6692;
 }
 

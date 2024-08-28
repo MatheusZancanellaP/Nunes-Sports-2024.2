@@ -30,7 +30,7 @@
             <td>
                 <a th:href="@{/products/{id}(id=${product.id})}">View</a>
                 <a th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
-                <form th:action="@{/products/{id}/delete(id=${product.id})}" th:method="delete" style="display: inline;">
+                <form th:action="@{/products/{id}/delete(id=${product.id})}" th:method="delete" style="display: inline; margin: 0 0 0 0;">
                     <button type="submit" class="delete-link">Delete</button>
                 </form>
             </td>
